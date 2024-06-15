@@ -1,15 +1,17 @@
-import PyPDF2
+import fitz  # PyMuPDF
 
 def extract_text_from_pdf(file_path):
-    pdf_file_obj = open(file_path, 'rb')
-    pdf_reader = PyPDF2.PdfReader(pdf_file_obj)
+    # Open the PDF file
+    document = fitz.open(file_path)
     text = ''
-    for page in pdf_reader.pages:
-        text += page.extract_text()
-    pdf_file_obj.close()
+    # Iterate over each page
+    for page_num in range(len(document)):
+        page = document.load_page(page_num)  # Load each page
+        text += page.get_text()  # Extract text from each page
+    document.close()
     return text
 
 # Call the function and print the result
-file_path = r"C:\Users\samkh\Documents\gate2023.pdf"
+file_path = "GATE.pdf"  # Replace with your local PDF file name
 extracted_text = extract_text_from_pdf(file_path)
 print(extracted_text[:500])  # Print the first 500 characters of the extracted text
