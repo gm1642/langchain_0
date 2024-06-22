@@ -1,0 +1,41 @@
+[
+    {
+        "question_id": "1",
+        "question": "Any attempt to access (read, write, or execute) unused or unmapped memory locations shall result in a reset of the computing system.",
+        "answer": "The definition of reset may differ across computer architectures, varying from hard general MCU reset where every single hardware element is restarted, to more granular reset where only specific elements are restarted. The appropriated level of reset is a topic to be analyzed for the specific type of product architecture, such that the affected application resources are restarted: program counter, registers, instruction and data memory, input and output peripherals. Hence, the complete MCU reset will be more likely required by all monolithic systems while in multi-partition systems there could be opportunities to be more selective for sake of overall system service availability, safety, etc."
+    },
+    {
+        "question_id": "2",
+        "question": "Any attempt to access (read, write, or execute) restricted memory locations shall trigger a reaction mechanism for intrusion detection and/or safety.",
+        "answer": "The nature of purpose-specific system designs may not require memory protection mechanisms, such that the entire memory resources become accessible to all the applications. Notice that despite this requirement is not applicable in such cases memory protection mechanisms are still helpful for the detection of access to unused or not mapped memory."
+    },
+    {
+        "question_id": "3",
+        "question": "Unused instruction memory should be monitored against invalid execution attempt by any software component as early as its first execution and until the system shutdown or enters in low power mode.",
+        "answer": ""
+    },
+    {
+        "question_id": "4",
+        "question":"Unused data memory should be monitored against invalid read or write by any software component as early as its first execution and until the system shutdown or enters in low power mode. ",
+        "answer": "The intentional initialization of memory by a designated software component is considered a valid write access since the memory is used by design."
+    },
+    {
+        "question_id": "5",
+        "question": "Any reset event caused by malfunction shall be logged in persistent memory.",
+        "answer": "Some architectures (at product or chip level) consider reset as the regular path to perform system level transitions (e.g. transition from low power mode to awake mode, from bootloader to application, from extended diagnostic session to default session). Unless there is an special need, such type of events are not expected to be included in the events log as part of the error handling strategy."
+    },
+    {
+        "question_id": "6",
+        "question": "The number of partial or full system resets triggered as recovery mechanism shall be monitored and handled to prevent infinite loops of resets out of control.",
+        "answer": "There might be systems where an infinite continuous reset state is the only technical choice but sufficient for the running context (users and other systems) to signal a malfunction without safety concerns."
+    },
+    {
+        "question_id": "7",
+        "question": "Staggered strategies should be considered to recover system functionality under malfunction conditions when the cost of recovery affects critical quality characteristics as availability and fault tolerance.",
+        "answer": "In monolithic systems with hard real time constrains and safety critical functions the safest recovery is achieved by the reset of the whole ECU, as long as it does not compromise the operation and goals of other systems. An staggered recovery strategy may not be justifiable in such cases. "
+    },
+    {
+        "question_id": "8",
+        "question": "Any partial system reset shall be observable and synchronized with the rest of the system at least after the reset operation is completed.",
+        "answer": ""
+    }]
