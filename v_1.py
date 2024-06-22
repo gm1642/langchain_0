@@ -4,7 +4,7 @@ import ollama
 import chromadb
 
 # Load the data from the JSON file
-with open('cleaned_qa_pairs.json', 'r') as f:
+with open('outputn.json', 'r') as f:
     qa_pairs = json.load(f)
 
 client = chromadb.Client()
