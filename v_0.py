@@ -37,7 +37,7 @@ for pair in qa_pairs:
     )
 
     # Wait for 1 second before making the next request
-    time.sleep(1)
+    # time.sleep(1)
 
     # Retrieve the stored document and print it
     doc = collection.get(question_id, include=["embeddings"])

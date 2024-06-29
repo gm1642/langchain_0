@@ -12,7 +12,7 @@ collection = client.create_collection(name="qa_pairs")
 
 # Prepare a dictionary to store the embeddings
 embeddings_dict = {}
-
+#sample question prompt A sum of money is to be distributed among P,Q, R, and S in the proportion 5 : 2 : 4 : 3,respectively.If R gets R 1000 more than S, what is the shareof Q (in Rs)?(a) 500(b) 1000(c) 1500(d) 2000
 # Function to add QA pairs to the database and generate embeddings
 def add_to_db(qa_pairs):
     for pair in qa_pairs:
